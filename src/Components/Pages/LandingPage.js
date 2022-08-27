@@ -1,7 +1,7 @@
 import classes from "./LandingPage.module.css";
-import Logo from "../images/LOGO-02 1.png";
-import LandingPageBanner from "../images/banner.png";
-import Button from "./Button";
+import Logo from "../../images/LOGO-02 1.png";
+import LandingPageBanner from "../../images/banner.png";
+import Button from "../Button";
 
 const LandingPage = () => {
   return (

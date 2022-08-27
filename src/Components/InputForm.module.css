@@ -37,9 +37,35 @@
   order: 1;
   align-self: stretch;
   flex-grow: 0;
+
+  /* textarea */
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  /* identical to box height, or 131% */
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+  padding-left: 16px;
 }
-::placeholder {
-  color: red;
+
+.input:focus {
+  box-sizing: border-box;
+  outline: none !important;
+  background: rgba(43, 75, 242, 0.06);
+  border: 1.8px solid #6499ff;
+  border-radius: 8px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  color: #000000;
 }
 
 .instructions {

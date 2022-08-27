@@ -2,6 +2,7 @@ import classes from "./Layout.module.css";
 import ButtomLogo from "../images/LOGO-10 2.png";
 
 const Layout = (props) => {
+  //frame for main pages
   return (
     <div className={classes.parent}>
       <header className={classes.headerParent}>

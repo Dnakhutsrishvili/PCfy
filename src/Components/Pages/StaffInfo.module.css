@@ -10,3 +10,8 @@
   justify-content: center;
   flex-direction: row;
 }
+.formContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

@@ -1,7 +1,9 @@
 import "./App.css";
-import LandingPage from "./Components/LandingPage";
+
 import { Route, Routes } from "react-router-dom";
-import StaffInfo from "./Components/StaffInfo";
+
+import LandingPage from "./Components/Pages/LandingPage";
+import StaffInfo from "./Components/Pages/StaffInfo";
 
 function App() {
   return (
