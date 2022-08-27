@@ -1,0 +1,69 @@
+.inputConteiner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px 24px;
+  gap: 8px;
+  margin-top: 88px;
+}
+
+.label {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height, or 117% */
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+.input {
+  box-sizing: border-box;
+
+  width: 408px;
+  height: 60px;
+
+  /* ლურჯი/400 */
+
+  border: 1.8px solid #8ac0e2;
+  border-radius: 8px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+::placeholder {
+  color: red;
+}
+
+.instructions {
+  width: 407px;
+  height: 21px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  /* identical to box height, or 150% */
+
+  display: flex;
+  align-items: center;
+  margin-top: -2px;
+  /* შავი/500 */
+
+  color: #2e2e2e;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}

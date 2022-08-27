@@ -1,0 +1,12 @@
+.conteiner {
+  height: 973px;
+  width: 1226px;
+  background: #ffffff;
+  border-radius: 18px;
+  margin-top: 27px;
+}
+.inpConteiner {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}

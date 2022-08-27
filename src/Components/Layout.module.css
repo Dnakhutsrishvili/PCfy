@@ -1,0 +1,36 @@
+.parent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1920px;
+  height: 1080px;
+  margin: 0;
+  padding: 0;
+  background-color: #e7f0f8;
+}
+.headerParent {
+  display: flex;
+
+  gap: 66px;
+  margin-top: 96px;
+}
+.title {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 1700;
+  font-size: 20px;
+  line-height: 24px;
+
+  /* შავი/700 */
+
+  color: #232323;
+}
+.underline {
+  border-bottom: 2px solid #000000;
+  width: 80%;
+}
+.logo {
+  margin-top: 67px;
+  width: 85px;
+  height: 85px;
+}

@@ -1,0 +1,22 @@
+.flexParent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 79px;
+}
+.logo {
+  width: 112px;
+  height: 18px;
+}
+.banner {
+  width: 781px;
+  height: 482px;
+  margin-top: 85px;
+  margin-bottom: 123px;
+}
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
