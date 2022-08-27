@@ -15,3 +15,13 @@
   align-items: center;
   flex-direction: column;
 }
+.fixed1 {
+  position: fixed;
+  margin-top: 266px;
+  z-index: 1;
+}
+
+.fixed2 {
+  position: fixed;
+  margin-top: 379px;
+}

@@ -1,17 +1,11 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import classes from "./OptionForm.module.css";
+import Arrow from "../images/arrow.png";
 
-const OptionForm = () => {
-  const [data, setData] = useState([]);
-  const [selectedId, setSelectedId] = useState({ name: "თიმი", id: 0 });
+const OptionForm = (props) => {
+  const [selectedId, setSelectedId] = useState(props.initialValue);
   const [showState, setShowState] = useState(false);
-  useEffect(() => {
-    // GET request using axios inside useEffect React hook
-    axios
-      .get("https://pcfy.redberryinternship.ge/api/teams")
-      .then((response) => setData(response.data.data));
-  }, []);
+
   // console.log(data.id);
   return (
     <div className={classes.container}>
@@ -22,22 +16,25 @@ const OptionForm = () => {
         }}
       >
         {selectedId.name}
+        <img src={Arrow} className={classes.arrow} alt="arrow"></img>
       </div>
-      {showState &&
-        data.map((item) => {
-          return (
-            <div
-              className={classes.dropdown}
-              onClick={() => {
-                setSelectedId({ name: item.name, id: item.id });
-                setShowState(false);
-              }}
-              key={item.id}
-            >
-              {item.name}
-            </div>
-          );
-        })}
+      <div className={classes.dropshadow}>
+        {showState &&
+          props.data.map((item) => {
+            return (
+              <div
+                className={classes.dropdown}
+                onClick={() => {
+                  setSelectedId({ name: item.name, id: item.id });
+                  setShowState(false);
+                }}
+                key={item.id}
+              >
+                {item.name}
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import InputForm from "../InputForm";
 import Layout from "../Layout";
 import classes from "./StaffInfo.module.css";
@@ -7,6 +8,20 @@ const StaffInfo = () => {
   //states for name and last name
   const [name, setName] = useState("");
   const [lastName, setlastName] = useState("");
+
+  //state for data
+  const [teamData, setTeamData] = useState([]);
+  const [positionData, setPositionData] = useState([]);
+  useEffect(() => {
+    // GET request using axios inside useEffect React hook
+    axios
+      .get("https://pcfy.redberryinternship.ge/api/teams")
+      .then((response) => setTeamData(response.data.data));
+
+    axios
+      .get("https://pcfy.redberryinternship.ge/api/positions")
+      .then((response) => setPositionData(response.data.data));
+  }, []);
 
   return (
     <>
@@ -29,8 +44,18 @@ const StaffInfo = () => {
                 state={setlastName}
               ></InputForm>
             </div>
-
-           <OptionForm data={}></OptionForm>
+            <div className={classes.fixed1}>
+              <OptionForm
+                data={teamData}
+                initialValue={{ name: "თიმი", id: 0 }}
+              ></OptionForm>
+            </div>
+            <div className={classes.fixed2}>
+              <OptionForm
+                data={positionData}
+                initialValue={{ name: "პოზიცია", id: 0 }}
+              ></OptionForm>
+            </div>
           </form>
         </div>
       </Layout>
