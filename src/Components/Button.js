@@ -8,7 +8,11 @@ const Button = (props) => {
   };
   return (
     <>
-      <button onClick={clickHandeler} className={classes.btn}>
+      <button
+        style={props.stats}
+        onClick={clickHandeler}
+        className={classes.btn}
+      >
         {props.text}
       </button>
     </>

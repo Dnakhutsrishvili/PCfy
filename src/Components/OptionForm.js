@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "./OptionForm.module.css";
 import Arrow from "../images/arrow.png";
 
@@ -7,6 +7,9 @@ const OptionForm = (props) => {
   const [showState, setShowState] = useState(false);
 
   // console.log(data.id);
+  useEffect(() => {
+    props.state(selectedId);
+  }, [selectedId, props]);
   return (
     <div className={classes.container}>
       <div

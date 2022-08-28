@@ -14,8 +14,15 @@ const LandingPage = () => {
           alt="banner"
         ></img>
         <div className={classes.btnContainer}>
-          <Button nav={"/staffinfo"} text={"ჩანაწერის დამატება"}></Button>
-          <Button text={"ჩანაწერების სია"}></Button>
+          <Button
+            stats={{ height: "60px", width: "408px" }}
+            nav={"/staffinfo"}
+            text={"ჩანაწერის დამატება"}
+          ></Button>
+          <Button
+            stats={{ height: "60px", width: "408px" }}
+            text={"ჩანაწერების სია"}
+          ></Button>
         </div>
       </div>
       ;

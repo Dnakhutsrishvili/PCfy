@@ -9,6 +9,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+  margin-top: 88px;
 }
 .formContainer {
   display: flex;
@@ -16,12 +17,21 @@
   flex-direction: column;
 }
 .fixed1 {
-  position: fixed;
-  margin-top: 266px;
-  z-index: 1;
+  position: absolute;
+  margin-top: 216px;
+  z-index: 2;
 }
 
 .fixed2 {
-  position: fixed;
-  margin-top: 379px;
+  position: absolute;
+  margin-top: 329px;
+  z-index: 1;
+}
+.email {
+  margin-top: 245px;
+}
+
+.btn {
+  margin-left: 700px;
+  margin-top: 70px;
 }

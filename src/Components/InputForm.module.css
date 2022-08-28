@@ -4,7 +4,7 @@
   align-items: flex-start;
   padding: 8px 24px;
   gap: 8px;
-  margin-top: 88px;
+  /* margin-top: 88px; */
 }
 
 .label {
@@ -22,9 +22,6 @@
 }
 .input {
   box-sizing: border-box;
-
-  width: 408px;
-  height: 60px;
 
   /* ლურჯი/400 */
 
