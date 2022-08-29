@@ -6,7 +6,6 @@ const OptionForm = (props) => {
   const [selectedId, setSelectedId] = useState(props.initialValue);
   const [showState, setShowState] = useState(false);
 
-  // console.log(data.id);
   useEffect(() => {
     props.state(selectedId);
   }, [selectedId, props]);

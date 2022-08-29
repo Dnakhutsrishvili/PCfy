@@ -2,7 +2,7 @@ import classes from "./InputForm.module.css";
 
 const InputForm = (props) => {
   //input filed component
-  console.log(props.color.borderColor);
+
   return (
     <div className={classes.inputConteiner}>
       <label
@@ -12,7 +12,7 @@ const InputForm = (props) => {
         {props.label}
       </label>
       <input
-        // value={props.value.name}
+        value={props.value}
         onChange={(e) => {
           props.state(e.target.value);
         }}

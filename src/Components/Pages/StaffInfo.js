@@ -5,15 +5,56 @@ import Layout from "../Layout";
 import classes from "./StaffInfo.module.css";
 import OptionForm from "../OptionForm";
 import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 
 const StaffInfo = () => {
+  let navigate = useNavigate();
   //state
-  const [name, setName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [team, setTeam] = useState("");
-  const [position, setPosition] = useState("");
+  const [name, setName] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("name");
+
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+
+  const [lastName, setlastName] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("lastname");
+
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+  const [email, setEmail] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("email");
+
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+  const [number, setNumber] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("number");
+
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+  const [team, setTeam] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("team");
+
+    const initialValue = JSON.parse(saved);
+    return initialValue || { name: "თიმი", id: 0 };
+  });
+  const [position, setPosition] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("position");
+
+    const initialValue = JSON.parse(saved);
+    return initialValue || { name: "პოზიცია", id: 0 };
+  });
+
+  const [nextPage, setNextPage] = useState("");
 
   //validation
   const [nameValidation, setNameValidation] = useState(false);
@@ -23,13 +64,14 @@ const StaffInfo = () => {
   const [teamValidation, setTeamValidation] = useState(false);
   const [positionValidation, setPositionValidation] = useState(false);
 
-  const [validation, setValidation] = useState(false);
   const [borderColorInputName, setBorderColorInputName] = useState({});
   const [borderColorInputLastName, setBorderColorInputLastName] = useState({});
   const [borderColorInputEmail, setBorderColorInputEmail] = useState({});
   const [borderColorInputNumber, setBorderColorInputNumber] = useState({});
   const [borderColorFormTeam, setBorderColorFormTeam] = useState({});
   const [borderColorFormPos, setBorderColorFormPos] = useState({});
+
+  //local storage
 
   //state for data
   const [teamData, setTeamData] = useState([]);
@@ -43,7 +85,38 @@ const StaffInfo = () => {
     axios
       .get("https://pcfy.redberryinternship.ge/api/positions")
       .then((response) => setPositionData(response.data.data));
-  }, [localStorage]);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("name", JSON.stringify(name));
+    localStorage.setItem("lastname", JSON.stringify(lastName));
+    localStorage.setItem("email", JSON.stringify(email));
+    localStorage.setItem("number", JSON.stringify(number));
+    localStorage.setItem("team", JSON.stringify(team));
+    localStorage.setItem("position", JSON.stringify(position));
+  }, [name, lastName, email, number, team, position]);
+
+  useEffect(() => {
+    if (
+      nameValidation &&
+      lastNameValidation &&
+      emailValidation &&
+      numberValidation &&
+      teamValidation &&
+      positionValidation
+    ) {
+      navigate("/leptopinfo");
+    }
+  }, [
+    nameValidation,
+    lastNameValidation,
+    emailValidation,
+    numberValidation,
+    teamValidation,
+    positionValidation,
+  ]);
+
+  console.log(nextPage);
 
   const getFullData = (e) => {
     e.preventDefault();
@@ -99,24 +172,7 @@ const StaffInfo = () => {
       setPositionValidation(false);
       setBorderColorFormPos({ border: "1.8px solid #e52f2f" });
     }
-    if (
-      nameValidation &&
-      lastNameValidation &&
-      emailValidation &&
-      numberValidation &&
-      teamValidation &&
-      positionValidation
-    ) {
-      console.log(validation);
-    }
   };
-  console.log("name " + nameValidation);
-  console.log("lastname " + lastNameValidation);
-  console.log("email " + emailValidation);
-  console.log("number " + numberValidation);
-  console.log("team " + teamValidation);
-  console.log("pos " + positionValidation);
-  console.log(validation);
 
   return (
     <>
@@ -125,7 +181,7 @@ const StaffInfo = () => {
           <form onSubmit={getFullData} className={classes.formContainer}>
             <div className={classes.inpConteiner}>
               <InputForm
-                // value={date}
+                value={name}
                 label={"სახელი"}
                 instructions={"მინიმუმ 2 სიმბოლო, ქართული ასოები"}
                 text={"text"}
@@ -135,6 +191,7 @@ const StaffInfo = () => {
                 color={borderColorInputName}
               ></InputForm>
               <InputForm
+                value={lastName}
                 label={"გვარი"}
                 instructions={"მინიმუმ 2 სიმბოლო, ქართული ასოები"}
                 text={"text"}
@@ -147,7 +204,7 @@ const StaffInfo = () => {
             <div className={classes.fixed1}>
               <OptionForm
                 data={teamData}
-                initialValue={{ name: "თიმი", id: 0 }}
+                initialValue={team}
                 state={setTeam}
                 color={borderColorFormTeam}
               ></OptionForm>
@@ -155,13 +212,14 @@ const StaffInfo = () => {
             <div className={classes.fixed2}>
               <OptionForm
                 data={positionData}
-                initialValue={{ name: "პოზიცია", id: 0 }}
+                initialValue={position}
                 state={setPosition}
                 color={borderColorFormPos}
               ></OptionForm>
             </div>
             <div className={classes.email}>
               <InputForm
+                value={email}
                 label={"მეილი"}
                 instructions={"უნდა მთავრდებოდეს @redberry.ge-ით"}
                 text={"email"}
@@ -173,6 +231,7 @@ const StaffInfo = () => {
             </div>
             <div className={classes.number}>
               <InputForm
+                value={number}
                 label={"ტელეფონის ნომერი"}
                 instructions={"უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს"}
                 text={"number"}
@@ -185,7 +244,6 @@ const StaffInfo = () => {
             <div className={classes.btn}>
               <Button
                 stats={{ height: "60px", width: "176px" }}
-                nav={"/staffinfo"}
                 text={"შემდეგი"}
                 type="submit"
               ></Button>
