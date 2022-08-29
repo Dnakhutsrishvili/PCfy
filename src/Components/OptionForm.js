@@ -13,6 +13,7 @@ const OptionForm = (props) => {
   return (
     <div className={classes.container}>
       <div
+        style={props.color}
         className={classes.option}
         onClick={() => {
           setShowState(!showState);

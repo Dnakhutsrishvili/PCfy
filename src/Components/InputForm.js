@@ -2,9 +2,15 @@ import classes from "./InputForm.module.css";
 
 const InputForm = (props) => {
   //input filed component
+  console.log(props.color.borderColor);
   return (
     <div className={classes.inputConteiner}>
-      <label className={classes.label}>{props.label}</label>
+      <label
+        style={{ color: props.color.borderColor }}
+        className={classes.label}
+      >
+        {props.label}
+      </label>
       <input
         // value={props.value.name}
         onChange={(e) => {
@@ -13,9 +19,14 @@ const InputForm = (props) => {
         type={props.text}
         placeholder={props.placeholder}
         className={classes.input}
-        style={props.stats}
+        style={{ ...props.stats, ...props.color }}
       ></input>
-      <p className={classes.instructions}> {props.instructions}</p>
+      <p
+        style={{ color: props.color.borderColor }}
+        className={classes.instructions}
+      >
+        {props.instructions}
+      </p>
     </div>
   );
 };
