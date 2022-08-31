@@ -7,6 +7,8 @@ import OptionForm from "../OptionForm";
 import Button from "../Button";
 import { useNavigate } from "react-router-dom";
 
+import BackVector from "../Helpers/BackVector";
+
 const StaffInfo = () => {
   let navigate = useNavigate();
   //state
@@ -176,7 +178,8 @@ const StaffInfo = () => {
 
   return (
     <>
-      <Layout>
+      <Layout firstHr={{ display: "flex" }} secondHr={{ display: "none" }}>
+        <BackVector nav={"/"} />
         <div className={classes.conteiner}>
           <form onSubmit={getFullData} className={classes.formContainer}>
             <div className={classes.inpConteiner}>
@@ -203,6 +206,8 @@ const StaffInfo = () => {
             </div>
             <div className={classes.fixed1}>
               <OptionForm
+                margin={{ marginTop: "58px" }}
+                size={{ width: "858px", height: "60px" }}
                 data={teamData}
                 initialValue={team}
                 state={setTeam}
@@ -211,6 +216,8 @@ const StaffInfo = () => {
             </div>
             <div className={classes.fixed2}>
               <OptionForm
+                margin={{ marginTop: "58px" }}
+                size={{ width: "858px", height: "60px" }}
                 data={positionData}
                 initialValue={position}
                 state={setPosition}

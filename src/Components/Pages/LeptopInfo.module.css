@@ -1,0 +1,35 @@
+.conteiner {
+  display: flex;
+  flex-direction: column;
+  width: 1226px;
+  align-items: center;
+
+  height: 1571px;
+
+  background: #ffffff;
+  border-radius: 18px;
+  margin-top: 27px;
+}
+.secondParent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  border-bottom: 1px solid #c7c7c7;
+  padding-bottom: 20px;
+
+  width: 878px;
+}
+
+.secondLineContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 22px;
+  margin-top: 25px;
+}
+
+.cpunakadi {
+  margin-left: -22px;
+}

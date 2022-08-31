@@ -1,0 +1,19 @@
+.vector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 53px;
+  height: 53px;
+  left: 70px;
+  top: 53px;
+  cursor: pointer;
+
+  border-radius: 50%;
+  background: #d9d9d9;
+}
+
+.vectorImg {
+  width: 9.21px;
+  height: 16px;
+}

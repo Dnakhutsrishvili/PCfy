@@ -10,9 +10,9 @@ const OptionForm = (props) => {
     props.state(selectedId);
   }, [selectedId, props]);
   return (
-    <div className={classes.container}>
+    <div className={classes.container} style={props.margin}>
       <div
-        style={props.color}
+        style={(props.color, props.size)}
         className={classes.option}
         onClick={() => {
           setShowState(!showState);

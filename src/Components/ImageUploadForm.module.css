@@ -1,0 +1,38 @@
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7f7f7;
+  /* ლურჯი/700 */
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 68px;
+
+  border: 3px dashed #4386a9;
+  border-radius: 18px;
+  width: 878px;
+  height: 423px;
+}
+
+.text {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 38px;
+  /* or 190% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  /* ლურჯი/700 */
+
+  color: #4386a9;
+
+  margin-bottom: 65px;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+}
