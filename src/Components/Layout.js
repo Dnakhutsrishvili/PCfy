@@ -6,7 +6,7 @@ const Layout = (props) => {
   //frame for main pages
 
   return (
-    <div className={classes.parent}>
+    <div style={props.stats} className={classes.parent}>
       <header className={classes.headerParent}>
         <div>
           <h1 className={classes.title}>თანამშრომლების ინფო</h1>

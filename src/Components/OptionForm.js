@@ -12,7 +12,7 @@ const OptionForm = (props) => {
   return (
     <div className={classes.container} style={props.margin}>
       <div
-        style={(props.color, props.size)}
+        style={{ ...props.size, ...props.color }}
         className={classes.option}
         onClick={() => {
           setShowState(!showState);

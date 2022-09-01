@@ -1,0 +1,22 @@
+.parent {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 13px;
+}
+.radioParent {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.text {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+}
+.label {
+  margin-left: 9px;
+}

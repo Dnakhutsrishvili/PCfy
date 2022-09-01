@@ -12,6 +12,7 @@ import BackVector from "../Helpers/BackVector";
 const StaffInfo = () => {
   let navigate = useNavigate();
   //state
+  const [filteredPositions, setFilteredPositions] = useState([]);
   const [name, setName] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("name");
@@ -96,8 +97,15 @@ const StaffInfo = () => {
     localStorage.setItem("number", JSON.stringify(number));
     localStorage.setItem("team", JSON.stringify(team));
     localStorage.setItem("position", JSON.stringify(position));
-  }, [name, lastName, email, number, team, position]);
 
+    console.log(team);
+
+    let newarr = positionData.filter((pos) => {
+      return team.id === pos.team_id;
+    });
+    setFilteredPositions(newarr);
+  }, [name, lastName, email, number, team, position]);
+  console.log(filteredPositions);
   useEffect(() => {
     if (
       nameValidation &&
@@ -165,20 +173,24 @@ const StaffInfo = () => {
       setBorderColorFormTeam({});
     } else {
       setTeamValidation(false);
-      setBorderColorFormTeam({ border: "1.8px solid #e52f2f" });
+      setBorderColorFormTeam({ border: "1px solid #e52f2f" });
     }
-    if (position !== "" && position.id !== 0) {
+    if (position.id === 0) {
+      setPositionValidation(false);
+      setBorderColorFormPos({ border: "1px solid #e52f2f" });
+    } else {
       setPositionValidation(true);
       setBorderColorFormPos({});
-    } else {
-      setPositionValidation(false);
-      setBorderColorFormPos({ border: "1.8px solid #e52f2f" });
     }
   };
 
   return (
     <>
-      <Layout firstHr={{ display: "flex" }} secondHr={{ display: "none" }}>
+      <Layout
+        stats={{ width: "1920px", height: "1327px" }}
+        firstHr={{ display: "flex" }}
+        secondHr={{ display: "none" }}
+      >
         <BackVector nav={"/"} />
         <div className={classes.conteiner}>
           <form onSubmit={getFullData} className={classes.formContainer}>
@@ -218,7 +230,7 @@ const StaffInfo = () => {
               <OptionForm
                 margin={{ marginTop: "58px" }}
                 size={{ width: "858px", height: "60px" }}
-                data={positionData}
+                data={filteredPositions || positionData}
                 initialValue={position}
                 state={setPosition}
                 color={borderColorFormPos}

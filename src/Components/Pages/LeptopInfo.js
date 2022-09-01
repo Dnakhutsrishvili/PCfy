@@ -6,10 +6,45 @@ import InputForm from "../InputForm";
 import OptionForm from "../OptionForm";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import RadioInput from "../RadioInput";
+import Button from "../Button";
 
 const LeptopInfo = () => {
   const [leptopBrends, setLeptopBrends] = useState([]);
   const [cpuData, setCpuData] = useState([]);
+
+  const [leptopForm, setLeptopForm] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("leptopform");
+
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+
+  const [date, setDate] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("date");
+
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+
+  const [price, setPrice] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("price");
+
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+
+  const [dataType, setDataType] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("datatype");
+
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+
   const [cpuBirtvi, setCpuBirtvi] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("cpubirtvi");
@@ -66,7 +101,6 @@ const LeptopInfo = () => {
       .then((response) => setCpuData(response.data.data));
   }, []);
 
-  console.log(cpuData);
   useEffect(() => {
     localStorage.setItem("brends", JSON.stringify(Brends));
     localStorage.setItem("leptopname", JSON.stringify(leptopName));
@@ -74,10 +108,29 @@ const LeptopInfo = () => {
     localStorage.setItem("cpubirtvi", JSON.stringify(cpuBirtvi));
     localStorage.setItem("cpunakadi", JSON.stringify(cpuNakadi));
     localStorage.setItem("leptopram", JSON.stringify(leptopRam));
-  }, [Brends, leptopName, Cpu, cpuBirtvi, cpuNakadi, leptopRam]);
+    localStorage.setItem("datatype", JSON.stringify(dataType));
+    localStorage.setItem("date", JSON.stringify(date));
+    localStorage.setItem("price", JSON.stringify(price));
+    localStorage.setItem("leptopform", JSON.stringify(leptopForm));
+  }, [
+    Brends,
+    leptopName,
+    Cpu,
+    cpuBirtvi,
+    cpuNakadi,
+    leptopRam,
+    dataType,
+    date,
+    price,
+    leptopForm,
+  ]);
   return (
     <>
-      <Layout secondHr={{ display: "flex" }} firstHr={{ display: "none" }}>
+      <Layout
+        stats={{ width: "1920px", height: "2043px" }}
+        secondHr={{ display: "flex" }}
+        firstHr={{ display: "none" }}
+      >
         <BackVector nav={"/staffinfo"} />
         <div className={classes.conteiner}>
           <ImageUploadForm></ImageUploadForm>
@@ -135,7 +188,7 @@ const LeptopInfo = () => {
               ></InputForm>
             </div>
           </div>
-          <div>
+          <div className={classes.thirdLineparent}>
             <InputForm
               value={leptopRam}
               label={"ლეპტოპის RAM (GB)"}
@@ -143,9 +196,47 @@ const LeptopInfo = () => {
               text={"number"}
               placeholder={"16"}
               state={setLeptopRam}
-              stats={{ width: "276px", height: "60px" }}
+              stats={{ width: "407px", height: "60px" }}
               color={1}
             ></InputForm>
+            <RadioInput
+              state={setDataType}
+              text={"მეხსიერების ტიპი"}
+              first={"SSD"}
+              second={"HDD"}
+              value={dataType}
+            ></RadioInput>
+          </div>
+          <div className={classes.fourthParent}>
+            <div className={classes.lastParent}>
+              <InputForm
+                value={date}
+                label={"შეძენის რიცხვი (არჩევითი)"}
+                instructions={""}
+                text={"date"}
+                placeholder={""}
+                state={setDate}
+                stats={{ width: "407px", height: "60px" }}
+                color={1}
+              ></InputForm>
+              <InputForm
+                value={price}
+                label={"ლეპტოპის ფასი"}
+                instructions={"მხოლოდ ციფრები"}
+                text={"number"}
+                placeholder={"0000"}
+                state={setPrice}
+                stats={{ width: "407px", height: "60px" }}
+                color={1}
+              ></InputForm>
+            </div>
+            <RadioInput
+              state={setLeptopForm}
+              text={"ლეპტოპის მდგომარეობა"}
+              first={"ახალი"}
+              second={"მეორადი"}
+              value={leptopForm}
+            ></RadioInput>
           </div>
         </div>
       </Layout>

@@ -33,3 +33,27 @@
 .cpunakadi {
   margin-left: -22px;
 }
+
+.thirdLineparent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 1px solid #c7c7c7;
+  padding-bottom: 20px;
+
+  width: 878px;
+}
+.lastParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.fourthParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
