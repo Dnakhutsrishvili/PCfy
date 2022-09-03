@@ -10,7 +10,7 @@ const RadioInput = (props) => {
           <input
             type="radio"
             id={props.first}
-            name="type"
+            name={props.type}
             value={props.first}
             onChange={(e) => {
               props.state(e.target.value);
@@ -29,7 +29,7 @@ const RadioInput = (props) => {
             }}
             type="radio"
             id={props.second}
-            name="type"
+            name={props.type}
             value={props.second}
             defaultChecked={props.value === props.second}
           />

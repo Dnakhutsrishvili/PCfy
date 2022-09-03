@@ -26,6 +26,7 @@ const OptionForm = (props) => {
           props.data.map((item) => {
             return (
               <div
+                style={props.width}
                 className={classes.dropdown}
                 onClick={() => {
                   setSelectedId({ name: item.name, id: item.id });

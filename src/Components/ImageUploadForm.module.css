@@ -36,3 +36,16 @@
   display: flex;
   justify-content: center;
 }
+.uploadedParent {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 46px;
+  justify-content: space-between;
+}
+.uploadedFlex {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+}

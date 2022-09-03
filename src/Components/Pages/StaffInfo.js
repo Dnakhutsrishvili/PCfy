@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import InputForm from "../InputForm";
 import Layout from "../Layout";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 import BackVector from "../Helpers/BackVector";
 
-const StaffInfo = () => {
+const StaffInfo = ({ data }) => {
   let navigate = useNavigate();
   //state
   const [filteredPositions, setFilteredPositions] = useState([]);
@@ -58,6 +58,7 @@ const StaffInfo = () => {
   });
 
   const [nextPage, setNextPage] = useState("");
+  const [dataTosend, setDataTosend] = useState();
 
   //validation
   const [nameValidation, setNameValidation] = useState(false);
@@ -75,7 +76,7 @@ const StaffInfo = () => {
   const [borderColorFormPos, setBorderColorFormPos] = useState({});
 
   //local storage
-
+  const ThemeContext = React.createContext(dataTosend);
   //state for data
   const [teamData, setTeamData] = useState([]);
   const [positionData, setPositionData] = useState([]);
@@ -98,14 +99,21 @@ const StaffInfo = () => {
     localStorage.setItem("team", JSON.stringify(team));
     localStorage.setItem("position", JSON.stringify(position));
 
-    console.log(team);
-
+    setDataTosend({
+      name: name,
+      surname: lastName,
+      email: email,
+      phone_number: number,
+      team_id: team.id,
+      position_id: position.id,
+    });
+    localStorage.setItem("datatosend", JSON.stringify(dataTosend));
     let newarr = positionData.filter((pos) => {
       return team.id === pos.team_id;
     });
     setFilteredPositions(newarr);
-  }, [name, lastName, email, number, team, position]);
-  console.log(filteredPositions);
+  }, [name, lastName, email, number, team, position, dataTosend]);
+
   useEffect(() => {
     if (
       nameValidation &&
@@ -125,8 +133,6 @@ const StaffInfo = () => {
     teamValidation,
     positionValidation,
   ]);
-
-  console.log(nextPage);
 
   const getFullData = (e) => {
     e.preventDefault();
@@ -182,6 +188,7 @@ const StaffInfo = () => {
       setPositionValidation(true);
       setBorderColorFormPos({});
     }
+    data(dataTosend);
   };
 
   return (
@@ -224,6 +231,7 @@ const StaffInfo = () => {
                 initialValue={team}
                 state={setTeam}
                 color={borderColorFormTeam}
+                width={{ width: "858px" }}
               ></OptionForm>
             </div>
             <div className={classes.fixed2}>
@@ -234,6 +242,7 @@ const StaffInfo = () => {
                 initialValue={position}
                 state={setPosition}
                 color={borderColorFormPos}
+                width={{ width: "858px" }}
               ></OptionForm>
             </div>
             <div className={classes.email}>
