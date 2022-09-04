@@ -1,0 +1,53 @@
+.background {
+  width: 2033px;
+  height: 1205px;
+  background: #4a4a4a;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 847px;
+  height: 537px;
+  left: 536px;
+  top: 271px;
+
+  background: #ffffff;
+  border-radius: 8px;
+}
+.img {
+  width: 200px;
+  height: 260px;
+}
+.text {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 31px;
+  /* identical to box height */
+
+  text-align: center;
+
+  /* შავი/600 */
+
+  color: #292929;
+}
+.btnparent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 70px;
+}
+.link {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+
+  color: #0089a7;
+}

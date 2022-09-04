@@ -57,7 +57,6 @@ const StaffInfo = ({ data }) => {
     return initialValue || { name: "პოზიცია", id: 0 };
   });
 
-  const [nextPage, setNextPage] = useState("");
   const [dataTosend, setDataTosend] = useState();
 
   //validation
@@ -76,7 +75,7 @@ const StaffInfo = ({ data }) => {
   const [borderColorFormPos, setBorderColorFormPos] = useState({});
 
   //local storage
-  const ThemeContext = React.createContext(dataTosend);
+
   //state for data
   const [teamData, setTeamData] = useState([]);
   const [positionData, setPositionData] = useState([]);
@@ -99,14 +98,6 @@ const StaffInfo = ({ data }) => {
     localStorage.setItem("team", JSON.stringify(team));
     localStorage.setItem("position", JSON.stringify(position));
 
-    setDataTosend({
-      name: name,
-      surname: lastName,
-      email: email,
-      phone_number: "+" + number,
-      team_id: team.id,
-      position_id: position.id,
-    });
     localStorage.setItem("datatosend", JSON.stringify(dataTosend));
     let newarr = positionData.filter((pos) => {
       return team.id === pos.team_id;
@@ -188,6 +179,15 @@ const StaffInfo = ({ data }) => {
       setPositionValidation(true);
       setBorderColorFormPos({});
     }
+
+    setDataTosend({
+      name: name,
+      surname: lastName,
+      email: email,
+      phone_number: "+" + number,
+      team_id: team.id,
+      position_id: position.id,
+    });
     data(dataTosend);
   };
 

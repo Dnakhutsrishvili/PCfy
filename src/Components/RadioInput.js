@@ -4,7 +4,13 @@ import classes from "./RadioInput.module.css";
 const RadioInput = (props) => {
   return (
     <div className={classes.parent}>
-      <legend className={classes.text}>{props.text}</legend>
+      {props.validation ? (
+        <legend style={{ color: "#e52f2f" }} className={classes.text}>
+          {props.text}
+        </legend>
+      ) : (
+        <legend className={classes.text}>{props.text}</legend>
+      )}
       <div className={classes.radioParent}>
         <div>
           <input
@@ -33,6 +39,7 @@ const RadioInput = (props) => {
             value={props.second}
             defaultChecked={props.value === props.second}
           />
+
           <label className={classes.label} htmlFor={props.second}>
             {props.second}
           </label>

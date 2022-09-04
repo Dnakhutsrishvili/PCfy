@@ -1,54 +1,67 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-
 import Button from "./Button";
 import classes from "./ImageUploadForm.module.css";
-import img from "../images/uploadedimage.png";
-import { base64StringToBlob } from "blob-util";
+import uploadedimage from "../images/uploadedimage.png";
 
 function ImageUploadForm(props) {
-  // const [image, setImage] = React.useState(undefined);
+  //local storage doesnt work
+  const [image, setImage] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("image");
 
-  const handleOnChangeFile = (event) => {
-    const imgFile = event.target.files[0];
+    return saved || [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("image", image);
+  }, [image]);
+
+  const onDrop = useCallback((acceptedFiles) => {
+    // Do something with the files
+    const imgFile = acceptedFiles[0];
+    setImage(imgFile);
     const formData = new FormData();
     formData.append("userpic", imgFile, imgFile.name);
-    console.log(formData);
+
     props.getImage(imgFile);
-  };
-  //   reader.addEventListener("loadend", (val) => {
-  //     setImage({
-  //       file: imgFile,
-  //       blob: val.srcElement.result,
-  //     });
-  //   });
-
-  //   reader.readAsDataURL(imgFile);
-  // };
-
-  // const handleSubmit = () => {
-  //   if (image) {
-  //     const formData = new FormData();
-  //     formData.append("IMAGE", image.file);
-
-  //     console.log("FormData:", formData.get("IMAGE"));
-  //     console.log("base-64 encoded blob:", image.blob);
-
-  //     props.getImage(formData.get("IMAGE"));
-  //     //here you can use XHR/Axios to upload image, e.g:
-  //     /*
-  //       axios.post("/file-uploader", (formData OR image.blob));
-  //     */
-  //   }
-  // };
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <div>
-      <form>
-        <h1>take a look into console!</h1>
-        <input type="file" onChange={handleOnChangeFile} />
-      </form>
-    </div>
+    <>
+      <div style={props.border} className={classes.parent} {...getRootProps()}>
+        <input {...getInputProps()} />
+        {image.length < 1 ? (
+          <div className={classes.uploadedFlex}>
+            <p className={classes.text}>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</p>
+            <Button
+              stats={{ height: "60px", width: "233px" }}
+              text={"ატვირთე"}
+            ></Button>
+          </div>
+        ) : (
+          <div></div>
+        )}
+      </div>
+      {image.length < 1 ? (
+        <div></div>
+      ) : (
+        <div className={classes.uploadedParent}>
+          <div className={classes.flex}>
+            <img className={classes.img} src={uploadedimage}></img>
+            <p>{image.name}</p>
+            <p>{image.size + "mb"}</p>
+          </div>
+          <div {...getRootProps()}>
+            <Button
+              stats={{ height: "60px", width: "233px" }}
+              text={"ხელახლა ატვირთე"}
+            ></Button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

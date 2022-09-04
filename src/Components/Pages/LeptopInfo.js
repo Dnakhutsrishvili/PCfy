@@ -8,10 +8,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import RadioInput from "../RadioInput";
 import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 
 const LeptopInfo = (props) => {
+  let navigate = useNavigate();
   const [image, setImage] = useState("");
-  console.log(image);
+
   const [data, setData] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("datatosend");
@@ -135,14 +137,98 @@ const LeptopInfo = (props) => {
     leptopForm,
     props.staffInfoData,
   ]);
+
   const getImage = (image) => {
     const formData = new FormData();
     formData.append("userpic", image, image.name);
-    console.log(formData);
+
     setImage(formData.get("userpic"));
   };
+
+  //validation
+
+  const [datatypeValidation, setdatatypeValidation] = useState(false);
+
+  const [leptopsStateValidation, setleptopsStateValidation] = useState(false);
+
+  const [borderColorImage, setborderColorImage] = useState({});
+  const [leptopnameval, setleptopnameval] = useState({});
+  const [leptopbrendval, setleptopbrendval] = useState({});
+  const [cpuBorder, setcpuBorder] = useState({});
+  const [birtviBorder, setbirtviBorder] = useState({});
+  const [nakadiBorder, setnakadiBorder] = useState({});
+  const [ramBorder, setRamborder] = useState({});
+  const [dateborder, setdateborder] = useState({});
+  const [priceborder, setpriceborder] = useState({});
+
   const getFullData = (e) => {
     e.preventDefault();
+
+    //validation
+    if (image.name === undefined) {
+      setborderColorImage({ border: "3px dashed #e52f2f" });
+    } else {
+      setborderColorImage({});
+    }
+
+    if (!leptopName.length > 0) {
+      setleptopnameval({ borderColor: "#e52f2f" });
+    } else {
+      setleptopnameval({});
+    }
+
+    if (Brends !== "" && Brends.id !== 0) {
+      setleptopbrendval({});
+    } else {
+      setleptopbrendval({ border: "1px solid #e52f2f" });
+    }
+    if (Cpu !== "" && Cpu.id !== 0) {
+      setcpuBorder({});
+    } else {
+      setcpuBorder({ border: "1px solid #e52f2f" });
+    }
+
+    if (!cpuBirtvi.length > 0) {
+      setbirtviBorder({ borderColor: "#e52f2f" });
+    } else {
+      setbirtviBorder({});
+    }
+
+    if (!cpuNakadi.length > 0) {
+      setnakadiBorder({ borderColor: "#e52f2f" });
+    } else {
+      setnakadiBorder({});
+    }
+
+    if (leptopRam.length > 0) {
+      setRamborder({});
+    } else {
+      setRamborder({ borderColor: "#e52f2f" });
+    }
+
+    if (dataType.length > 0) {
+      setdatatypeValidation(false);
+    } else {
+      setdatatypeValidation(true);
+    }
+
+    if (date.length > 0) {
+      setdateborder({});
+    } else {
+      setdateborder({ borderColor: "#e52f2f" });
+    }
+
+    if (price.length > 0) {
+      setpriceborder({});
+    } else {
+      setpriceborder({ borderColor: "#e52f2f" });
+    }
+
+    if (leptopForm.length > 0) {
+      setleptopsStateValidation(false);
+    } else {
+      setleptopsStateValidation(true);
+    }
 
     let laptopState = "new";
     if (leptopForm === "ახალი") {
@@ -191,6 +277,9 @@ const LeptopInfo = (props) => {
         }
       )
       .then(function (response) {
+        if (response.status === 200) {
+          navigate("/finalpage");
+        }
         console.log(response);
       })
       .catch(function (error) {
@@ -208,7 +297,10 @@ const LeptopInfo = (props) => {
         <BackVector nav={"/staffinfo"} />
         <div className={classes.conteiner}>
           <form onSubmit={getFullData}>
-            <ImageUploadForm getImage={getImage}></ImageUploadForm>
+            <ImageUploadForm
+              border={borderColorImage}
+              getImage={getImage}
+            ></ImageUploadForm>
             <div className={classes.secondParent}>
               <InputForm
                 value={leptopName}
@@ -218,7 +310,7 @@ const LeptopInfo = (props) => {
                 placeholder={"HP"}
                 state={setLeptopName}
                 stats={{ width: "407px", height: "60px" }}
-                color={1}
+                color={leptopnameval}
               ></InputForm>
               <OptionForm
                 data={leptopBrends}
@@ -226,7 +318,7 @@ const LeptopInfo = (props) => {
                 state={setBrends}
                 size={{ width: "408px", height: "60px" }}
                 margin={{ marginTop: "-10px" }}
-                //   color={borderColorFormPos}
+                color={leptopbrendval}
                 width={{ width: "408px" }}
               ></OptionForm>
             </div>
@@ -237,7 +329,7 @@ const LeptopInfo = (props) => {
                 state={setCpu}
                 size={{ width: "277px", height: "60px" }}
                 margin={{ marginTop: "-10px" }}
-                //   color={borderColorFormPos}
+                color={cpuBorder}
                 width={{ width: "277px" }}
               ></OptionForm>
               <div className={classes.cpubirtvi}>
@@ -249,7 +341,7 @@ const LeptopInfo = (props) => {
                   placeholder={"14"}
                   state={setCpuBirtvi}
                   stats={{ width: "276px", height: "60px" }}
-                  color={1}
+                  color={birtviBorder}
                 ></InputForm>
               </div>
               <div className={classes.cpunakadi}>
@@ -261,7 +353,7 @@ const LeptopInfo = (props) => {
                   placeholder={"365"}
                   state={setCpuNakadi}
                   stats={{ width: "276px", height: "60px" }}
-                  color={1}
+                  color={nakadiBorder}
                 ></InputForm>
               </div>
             </div>
@@ -274,7 +366,7 @@ const LeptopInfo = (props) => {
                 placeholder={"16"}
                 state={setLeptopRam}
                 stats={{ width: "407px", height: "60px" }}
-                color={1}
+                color={ramBorder}
               ></InputForm>
               <RadioInput
                 state={setDataType}
@@ -283,6 +375,7 @@ const LeptopInfo = (props) => {
                 second={"HDD"}
                 value={dataType}
                 type={"datatype"}
+                validation={datatypeValidation}
               ></RadioInput>
             </div>
             <div className={classes.fourthParent}>
@@ -295,7 +388,7 @@ const LeptopInfo = (props) => {
                   placeholder={""}
                   state={setDate}
                   stats={{ width: "407px", height: "60px" }}
-                  color={1}
+                  color={dateborder}
                 ></InputForm>
                 <InputForm
                   value={price}
@@ -305,7 +398,7 @@ const LeptopInfo = (props) => {
                   placeholder={"0000"}
                   state={setPrice}
                   stats={{ width: "407px", height: "60px" }}
-                  color={1}
+                  color={priceborder}
                 ></InputForm>
               </div>
               <RadioInput
@@ -315,6 +408,7 @@ const LeptopInfo = (props) => {
                 second={"მეორადი"}
                 value={leptopForm}
                 type={"laptopform"}
+                validation={leptopsStateValidation}
               ></RadioInput>
             </div>
             <Button
