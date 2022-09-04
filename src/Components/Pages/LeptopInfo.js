@@ -10,6 +10,8 @@ import RadioInput from "../RadioInput";
 import Button from "../Button";
 
 const LeptopInfo = (props) => {
+  const [image, setImage] = useState("");
+  console.log(image);
   const [data, setData] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("datatosend");
@@ -18,7 +20,6 @@ const LeptopInfo = (props) => {
     return initialValue || props.staffInfoData;
   });
 
-  const [leptopImage, setLeptopImage] = useState();
   const [leptopBrends, setLeptopBrends] = useState([]);
   const [cpuData, setCpuData] = useState([]);
 
@@ -100,10 +101,6 @@ const LeptopInfo = (props) => {
     return initialValue || { name: "CPU", id: 0 };
   });
 
-  const getLeptopImage = (data) => {
-    setLeptopImage(data);
-  };
-
   useEffect(() => {
     // GET request using axios inside useEffect React hook
     axios
@@ -125,7 +122,6 @@ const LeptopInfo = (props) => {
     localStorage.setItem("date", JSON.stringify(date));
     localStorage.setItem("price", JSON.stringify(price));
     localStorage.setItem("leptopform", JSON.stringify(leptopForm));
-    // localStorage.setItem("leptopimage", JSON.stringify(leptopImage));
   }, [
     Brends,
     leptopName,
@@ -139,9 +135,15 @@ const LeptopInfo = (props) => {
     leptopForm,
     props.staffInfoData,
   ]);
-
+  const getImage = (image) => {
+    const formData = new FormData();
+    formData.append("userpic", image, image.name);
+    console.log(formData);
+    setImage(formData.get("userpic"));
+  };
   const getFullData = (e) => {
     e.preventDefault();
+
     let laptopState = "new";
     if (leptopForm === "ახალი") {
       laptopState = "new";
@@ -152,7 +154,7 @@ const LeptopInfo = (props) => {
       token: "761a116263d4a6b1342630a179a3e6b1",
       laptop_name: leptopName,
 
-      // laptop_image: leptopImage[0].path,
+      laptop_image: image,
 
       laptop_brand_id: Brends.id,
 
@@ -174,8 +176,28 @@ const LeptopInfo = (props) => {
       ...data,
     };
     console.log(dataLeptop);
+
+    const headers = {
+      Accept: "multipart/form-data",
+      "Content-Type": "multipart/form-data",
+    };
+    //sending post request with axios
+    axios
+      .post(
+        "https://pcfy.redberryinternship.ge/api/laptop/create",
+        dataLeptop,
+        {
+          headers,
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
-  console.log(leptopImage);
+
   return (
     <>
       <Layout
@@ -186,7 +208,7 @@ const LeptopInfo = (props) => {
         <BackVector nav={"/staffinfo"} />
         <div className={classes.conteiner}>
           <form onSubmit={getFullData}>
-            <ImageUploadForm getLeptopImage={getLeptopImage}></ImageUploadForm>
+            <ImageUploadForm getImage={getImage}></ImageUploadForm>
             <div className={classes.secondParent}>
               <InputForm
                 value={leptopName}

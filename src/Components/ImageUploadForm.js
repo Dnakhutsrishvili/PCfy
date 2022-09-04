@@ -4,23 +4,50 @@ import { useDropzone } from "react-dropzone";
 import Button from "./Button";
 import classes from "./ImageUploadForm.module.css";
 import img from "../images/uploadedimage.png";
+import { base64StringToBlob } from "blob-util";
 
 function ImageUploadForm(props) {
-  const onDrop = useCallback((acceptedFiles) => {
-    // Do something with the files
+  // const [image, setImage] = React.useState(undefined);
 
-    props.getLeptopImage(acceptedFiles);
-  }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const handleOnChangeFile = (event) => {
+    const imgFile = event.target.files[0];
+    const formData = new FormData();
+    formData.append("userpic", imgFile, imgFile.name);
+    console.log(formData);
+    props.getImage(imgFile);
+  };
+  //   reader.addEventListener("loadend", (val) => {
+  //     setImage({
+  //       file: imgFile,
+  //       blob: val.srcElement.result,
+  //     });
+  //   });
+
+  //   reader.readAsDataURL(imgFile);
+  // };
+
+  // const handleSubmit = () => {
+  //   if (image) {
+  //     const formData = new FormData();
+  //     formData.append("IMAGE", image.file);
+
+  //     console.log("FormData:", formData.get("IMAGE"));
+  //     console.log("base-64 encoded blob:", image.blob);
+
+  //     props.getImage(formData.get("IMAGE"));
+  //     //here you can use XHR/Axios to upload image, e.g:
+  //     /*
+  //       axios.post("/file-uploader", (formData OR image.blob));
+  //     */
+  //   }
+  // };
 
   return (
-    <div {...getRootProps()}>
-      <input {...getInputProps()} />
-      {isDragActive ? (
-        <p>Drop the files here ...</p>
-      ) : (
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      )}
+    <div>
+      <form>
+        <h1>take a look into console!</h1>
+        <input type="file" onChange={handleOnChangeFile} />
+      </form>
     </div>
   );
 }

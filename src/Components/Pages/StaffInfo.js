@@ -103,7 +103,7 @@ const StaffInfo = ({ data }) => {
       name: name,
       surname: lastName,
       email: email,
-      phone_number: number,
+      phone_number: "+" + number,
       team_id: team.id,
       position_id: position.id,
     });

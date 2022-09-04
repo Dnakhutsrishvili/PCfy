@@ -32,10 +32,7 @@
 
   margin-bottom: 65px;
 }
-.btn {
-  display: flex;
-  justify-content: center;
-}
+
 .uploadedParent {
   display: flex;
   flex-direction: row;
@@ -48,4 +45,24 @@
   gap: 18px;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.uploaded {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-left: 25px;
+}
+
+.img {
+  height: 22px;
 }
