@@ -19,3 +19,67 @@
   margin-right: auto;
   margin-top: 79px;
 }
+.firstLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 84px;
+  border-bottom: 1px solid #a5a5a5;
+  width: 1178px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 84px;
+}
+.img {
+  width: 577px;
+  height: 342px;
+}
+.nameline {
+  display: flex;
+  flex-direction: column;
+}
+.widtName {
+  margin-right: 80px;
+  margin-left: 68px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+
+  /* შავი/500 */
+
+  color: #2e2e2e;
+}
+.parentUser {
+  display: flex;
+  flex-direction: row;
+}
+.property {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  /* or 123% */
+
+  /* შავი/400 */
+
+  color: #797979;
+}
+
+.secondLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 54px;
+  border-bottom: 1px solid #a5a5a5;
+  width: 1178px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 84px;
+}
+.secondlineParent {
+  display: flex;
+}
