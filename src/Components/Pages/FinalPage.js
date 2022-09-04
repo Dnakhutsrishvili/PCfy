@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const FinalPage = () => {
   let navigate = useNavigate();
+
   localStorage.clear();
   return (
     <>
@@ -16,6 +17,7 @@ const FinalPage = () => {
             <Button
               stats={{ height: "60px", width: "408px" }}
               text={"ჩანაწერების სია"}
+              nav={"/listofdata"}
             ></Button>
 
             <p

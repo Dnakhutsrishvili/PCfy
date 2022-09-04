@@ -1,0 +1,93 @@
+.parent {
+  display: flex;
+}
+.text {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 21px;
+  /* identical to box height, or 62% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 79px;
+}
+.mappedParent {
+  display: flex;
+  margin: 20px;
+  width: 563px;
+  height: 205px;
+
+  background: #eafaff;
+  /* ლურჯი/300 */
+
+  border: 1px solid #aed1ea;
+  border-radius: 20px;
+}
+
+.img {
+  width: 266px;
+  height: 178px;
+  margin: 14px;
+  background: #d9d9d9;
+  border-radius: 10px;
+}
+
+.nameParent {
+  display: flex;
+  gap: 3px;
+}
+
+.name {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height, or 117% */
+
+  display: flex;
+  align-items: center;
+
+  /* შავი/500 */
+
+  color: #2e2e2e;
+}
+
+.rowParent {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 28px;
+}
+.laptopname {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height, or 117% */
+
+  display: flex;
+  align-items: center;
+
+  /* შავი/500 */
+
+  color: #2e2e2e;
+}
+
+.mapeConteiner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(50px, 1fr));
+  grid-gap: 1rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+}

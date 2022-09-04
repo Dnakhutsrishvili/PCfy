@@ -237,7 +237,7 @@ const LeptopInfo = (props) => {
       laptopState = "used";
     }
     const dataLeptop = {
-      token: "761a116263d4a6b1342630a179a3e6b1",
+      token: "938f2a57717c76cdf84bce4f32254396",
       laptop_name: leptopName,
 
       laptop_image: image,

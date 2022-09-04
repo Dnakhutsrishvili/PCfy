@@ -22,6 +22,7 @@ const LandingPage = () => {
           <Button
             stats={{ height: "60px", width: "408px" }}
             text={"ჩანაწერების სია"}
+            nav={"/listofdata"}
           ></Button>
         </div>
       </div>
