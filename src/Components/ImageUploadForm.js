@@ -48,7 +48,6 @@ function ImageUploadForm(props) {
           </div>
         ) : (
           <div>
-            <p className={classes.text}>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</p>
             <img src={image} alt="img"></img>
           </div>
         )}

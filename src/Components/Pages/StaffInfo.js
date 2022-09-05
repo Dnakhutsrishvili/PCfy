@@ -203,6 +203,13 @@ const StaffInfo = ({ data, responsive }) => {
         state={responsive.state}
       >
         <BackVector nav={"/"} state={responsive.state} />
+        {responsive.state && (
+          <div className={classes.header}>
+            <p>თანამშრომლის ინფო</p>
+            <p>1/2</p>
+          </div>
+        )}
+
         <div className={classes.conteiner}>
           <form onSubmit={getFullData} className={classes.formContainer}>
             <div className={classes.inpConteiner}>

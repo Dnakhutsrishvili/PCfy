@@ -305,6 +305,12 @@ const LeptopInfo = (props) => {
         state={props.responsive.state}
       >
         <BackVector nav={"/staffinfo"} state={props.responsive.state} />
+        {props.responsive.state && (
+          <div className={classes.header}>
+            <p>ლეპტოპის მახასიათებლები</p>
+            <p>2/2</p>
+          </div>
+        )}
         <div className={classes.conteiner}>
           <form onSubmit={getFullData}>
             <ImageUploadForm
