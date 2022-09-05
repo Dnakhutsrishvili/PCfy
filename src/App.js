@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import LandingPage from "./Components/Pages/LandingPage";
 import StaffInfo from "./Components/Pages/StaffInfo";
 import LeptopInfo from "./Components/Pages/LeptopInfo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FinalPage from "./Components/Pages/FinalPage";
 import ListOfData from "./Components/Pages/ListOfData";
 
@@ -20,17 +20,42 @@ function App() {
   const getId = (dataid) => {
     setLeptopId(dataid);
   };
+  //responsive state
+  const [width, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    updateDimensions();
+
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+  const updateDimensions = () => {
+    const width = window.innerWidth;
+    setWindowWidth(width);
+  };
+
+  const responsive = {
+    state: width < 800,
+  };
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage responsive={responsive} />} />
         <Route
           path="leptopinfo"
-          element={<LeptopInfo staffInfoData={staffInfoData} />}
+          element={
+            <LeptopInfo staffInfoData={staffInfoData} responsive={responsive} />
+          }
         />
-        <Route path="staffinfo" element={<StaffInfo data={getData} />} />
-        <Route path="finalpage" element={<FinalPage />} />
+        <Route
+          path="staffinfo"
+          element={<StaffInfo data={getData} responsive={responsive} />}
+        />
+        <Route
+          path="finalpage"
+          element={<FinalPage responsive={responsive} />}
+        />
         <Route path="listofdata" element={<ListOfData data={getId} />} />
         <Route path="listofleptop" element={<ListOfLeptop id={leptopId} />} />
       </Routes>

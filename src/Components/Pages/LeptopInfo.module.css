@@ -57,3 +57,71 @@
   flex-direction: column;
   margin-top: 50px;
 }
+
+.lastRadio {
+  display: flex;
+  align-items: flex-start;
+  margin-left: -630px;
+}
+
+.lastBtn {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.back {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height, or 117% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.08em;
+
+  color: #62a1eb;
+  cursor: pointer;
+  margin-left: 40px;
+}
+@media only screen and (max-width: 900px) {
+  .conteiner {
+    width: 390px;
+    height: 1811px;
+  }
+
+  .secondParent {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25px;
+    width: 390px;
+  }
+  .secondLineContainer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 390px;
+  }
+
+  .thirdLineparent {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    width: 390px;
+  }
+  .lastParent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 390px;
+  }
+  .lastRadio {
+    display: flex;
+    margin-left: -150px;
+    margin-top: 25px;
+  }
+}

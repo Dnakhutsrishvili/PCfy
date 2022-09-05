@@ -8,13 +8,15 @@ const Button = (props) => {
   };
   return (
     <>
-      <button
-        style={props.stats}
-        onClick={clickHandeler}
-        className={classes.btn}
-      >
-        {props.text}
-      </button>
+      <div style={props.state ? { display: "none" } : { display: "" }}>
+        <button
+          style={props.stats}
+          onClick={clickHandeler}
+          className={classes.btn}
+        >
+          {props.text}
+        </button>
+      </div>
     </>
   );
 };

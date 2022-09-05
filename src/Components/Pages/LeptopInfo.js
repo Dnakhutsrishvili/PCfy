@@ -163,7 +163,7 @@ const LeptopInfo = (props) => {
 
   const getFullData = (e) => {
     e.preventDefault();
-
+    console.log("trigereed");
     //validation
     if (image.name === undefined) {
       setborderColorImage({ border: "3px dashed #e52f2f" });
@@ -289,16 +289,23 @@ const LeptopInfo = (props) => {
   return (
     <>
       <Layout
-        stats={{ width: "1920px", height: "2043px" }}
+        stats={
+          props.responsive.state
+            ? { width: "390px", height: "1811px" }
+            : { width: "1920px", height: "1921px" }
+        }
+        co
         secondHr={{ display: "flex" }}
         firstHr={{ display: "none" }}
+        state={props.responsive.state}
       >
-        <BackVector nav={"/staffinfo"} />
+        <BackVector nav={"/staffinfo"} state={props.responsive.state} />
         <div className={classes.conteiner}>
           <form onSubmit={getFullData}>
             <ImageUploadForm
               border={borderColorImage}
               getImage={getImage}
+              state={props.responsive.state}
             ></ImageUploadForm>
             <div className={classes.secondParent}>
               <InputForm
@@ -308,17 +315,25 @@ const LeptopInfo = (props) => {
                 text={"text"}
                 placeholder={"HP"}
                 state={setLeptopName}
-                stats={{ width: "407px", height: "60px" }}
+                stats={
+                  props.responsive.state
+                    ? { height: "60px", width: "358px" }
+                    : { height: "60px", width: "407px" }
+                }
                 color={leptopnameval}
               ></InputForm>
               <OptionForm
                 data={leptopBrends}
                 initialValue={Brends}
                 state={setBrends}
-                size={{ width: "408px", height: "60px" }}
                 margin={{ marginTop: "-10px" }}
                 color={leptopbrendval}
                 width={{ width: "408px" }}
+                size={
+                  props.responsive.state
+                    ? { height: "60px", width: "348px" }
+                    : { height: "60px", width: "408px" }
+                }
               ></OptionForm>
             </div>
             <div className={classes.secondLineContainer}>
@@ -326,10 +341,14 @@ const LeptopInfo = (props) => {
                 data={cpuData}
                 initialValue={Cpu}
                 state={setCpu}
-                size={{ width: "277px", height: "60px" }}
                 margin={{ marginTop: "-10px" }}
                 color={cpuBorder}
                 width={{ width: "277px" }}
+                size={
+                  props.responsive.state
+                    ? { height: "60px", width: "348px" }
+                    : { height: "60px", width: "277px" }
+                }
               ></OptionForm>
               <div className={classes.cpubirtvi}>
                 <InputForm
@@ -339,8 +358,12 @@ const LeptopInfo = (props) => {
                   text={"number"}
                   placeholder={"14"}
                   state={setCpuBirtvi}
-                  stats={{ width: "276px", height: "60px" }}
                   color={birtviBorder}
+                  stats={
+                    props.responsive.state
+                      ? { height: "60px", width: "358px" }
+                      : { height: "60px", width: "276px" }
+                  }
                 ></InputForm>
               </div>
               <div className={classes.cpunakadi}>
@@ -351,7 +374,11 @@ const LeptopInfo = (props) => {
                   text={"number"}
                   placeholder={"365"}
                   state={setCpuNakadi}
-                  stats={{ width: "276px", height: "60px" }}
+                  stats={
+                    props.responsive.state
+                      ? { height: "60px", width: "358px" }
+                      : { height: "60px", width: "276px" }
+                  }
                   color={nakadiBorder}
                 ></InputForm>
               </div>
@@ -364,7 +391,11 @@ const LeptopInfo = (props) => {
                 text={"number"}
                 placeholder={"16"}
                 state={setLeptopRam}
-                stats={{ width: "407px", height: "60px" }}
+                stats={
+                  props.responsive.state
+                    ? { height: "60px", width: "358px" }
+                    : { height: "60px", width: "407px" }
+                }
                 color={ramBorder}
               ></InputForm>
               <RadioInput
@@ -386,7 +417,11 @@ const LeptopInfo = (props) => {
                   text={"date"}
                   placeholder={""}
                   state={setDate}
-                  stats={{ width: "407px", height: "60px" }}
+                  stats={
+                    props.responsive.state
+                      ? { height: "60px", width: "358px" }
+                      : { height: "60px", width: "407px" }
+                  }
                   color={dateborder}
                 ></InputForm>
                 <InputForm
@@ -396,25 +431,41 @@ const LeptopInfo = (props) => {
                   text={"number"}
                   placeholder={"0000"}
                   state={setPrice}
-                  stats={{ width: "407px", height: "60px" }}
+                  stats={
+                    props.responsive.state
+                      ? { height: "60px", width: "358px" }
+                      : { height: "60px", width: "407px" }
+                  }
                   color={priceborder}
                 ></InputForm>
               </div>
-              <RadioInput
-                state={setLeptopForm}
-                text={"ლეპტოპის მდგომარეობა"}
-                first={"ახალი"}
-                second={"მეორადი"}
-                value={leptopForm}
-                type={"laptopform"}
-                validation={leptopsStateValidation}
-              ></RadioInput>
+              <div className={classes.lastRadio}>
+                <RadioInput
+                  state={setLeptopForm}
+                  text={"ლეპტოპის მდგომარეობა"}
+                  first={"ახალი"}
+                  second={"მეორადი"}
+                  value={leptopForm}
+                  type={"laptopform"}
+                  validation={leptopsStateValidation}
+                ></RadioInput>
+              </div>
             </div>
-            <Button
-              stats={{ height: "60px", width: "176px" }}
-              text={"შემდეგი"}
-              type="submit"
-            ></Button>
+            <div className={classes.lastBtn}>
+              <p
+                className={classes.back}
+                onClick={() => {
+                  navigate("/staffinfo");
+                }}
+              >
+                უკან
+              </p>
+              <Button
+                stats={{ height: "60px", width: "219px" }}
+                text={"დამახსოვრება"}
+                type="submit"
+              ></Button>
+            </div>
           </form>
         </div>
       </Layout>

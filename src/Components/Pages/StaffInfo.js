@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 import BackVector from "../Helpers/BackVector";
 
-const StaffInfo = ({ data }) => {
+const StaffInfo = ({ data, responsive }) => {
   let navigate = useNavigate();
   //state
   const [filteredPositions, setFilteredPositions] = useState([]);
@@ -140,7 +140,7 @@ const StaffInfo = ({ data }) => {
     }
 
     if (
-      lastName.trim().length > 2 &&
+      lastName.trim().length > 1 &&
       lastName.match(/^([აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ]+)$/)
     ) {
       setlastNameValidation(true);
@@ -198,8 +198,9 @@ const StaffInfo = ({ data }) => {
         stats={{ width: "1920px", height: "1327px" }}
         firstHr={{ display: "flex" }}
         secondHr={{ display: "none" }}
+        state={responsive.state}
       >
-        <BackVector nav={"/"} />
+        <BackVector nav={"/"} state={responsive.state} />
         <div className={classes.conteiner}>
           <form onSubmit={getFullData} className={classes.formContainer}>
             <div className={classes.inpConteiner}>
@@ -210,7 +211,11 @@ const StaffInfo = ({ data }) => {
                 text={"text"}
                 placeholder={"input"}
                 state={setName}
-                stats={{ height: "60px", width: "408px" }}
+                stats={
+                  responsive.state
+                    ? { height: "60px", width: "358px" }
+                    : { height: "60px", width: "408px" }
+                }
                 color={borderColorInputName}
               ></InputForm>
               <InputForm
@@ -220,14 +225,22 @@ const StaffInfo = ({ data }) => {
                 text={"text"}
                 placeholder={"input"}
                 state={setlastName}
-                stats={{ height: "60px", width: "408px" }}
+                stats={
+                  responsive.state
+                    ? { height: "60px", width: "358px" }
+                    : { height: "60px", width: "408px" }
+                }
                 color={borderColorInputLastName}
               ></InputForm>
             </div>
             <div className={classes.fixed1}>
               <OptionForm
                 margin={{ marginTop: "58px" }}
-                size={{ width: "858px", height: "60px" }}
+                size={
+                  responsive.state
+                    ? { height: "60px", width: "348px" }
+                    : { height: "60px", width: "858px" }
+                }
                 data={teamData}
                 initialValue={team}
                 state={setTeam}
@@ -238,7 +251,11 @@ const StaffInfo = ({ data }) => {
             <div className={classes.fixed2}>
               <OptionForm
                 margin={{ marginTop: "58px" }}
-                size={{ width: "858px", height: "60px" }}
+                size={
+                  responsive.state
+                    ? { height: "60px", width: "348px" }
+                    : { height: "60px", width: "858px" }
+                }
                 data={filteredPositions || positionData}
                 initialValue={position}
                 state={setPosition}
@@ -254,7 +271,11 @@ const StaffInfo = ({ data }) => {
                 text={"email"}
                 placeholder={"grish666@redberry.ge"}
                 state={setEmail}
-                stats={{ height: "60px", width: "878px" }}
+                stats={
+                  responsive.state
+                    ? { height: "60px", width: "358px" }
+                    : { height: "60px", width: "878px" }
+                }
                 color={borderColorInputEmail}
               ></InputForm>
             </div>
@@ -266,7 +287,11 @@ const StaffInfo = ({ data }) => {
                 text={"number"}
                 placeholder={"+995 598 00 07 01"}
                 state={setNumber}
-                stats={{ height: "60px", width: "878px" }}
+                stats={
+                  responsive.state
+                    ? { height: "60px", width: "358px" }
+                    : { height: "60px", width: "878px" }
+                }
                 color={borderColorInputNumber}
               ></InputForm>
             </div>

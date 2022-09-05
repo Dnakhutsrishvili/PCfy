@@ -10,9 +10,24 @@ const BackVector = (props) => {
   };
   return (
     <>
-      <div onClick={navigateHendeler} className={classes.vector}>
+      <div
+        onClick={navigateHendeler}
+        style={
+          props.state
+            ? { background: "none", marginLeft: "-70px", marginTop: "-40px" }
+            : { background: "#d9d9d9" }
+        }
+        className={classes.vector}
+      >
         <img className={classes.vectorImg} src={Vector} alt="vector"></img>
       </div>
+
+      {props.state && (
+        <div>
+          <p className={classes.info}>თანამშრომლის ინფო</p>
+          <p className={classes.info}>1/2</p>
+        </div>
+      )}
     </>
   );
 };

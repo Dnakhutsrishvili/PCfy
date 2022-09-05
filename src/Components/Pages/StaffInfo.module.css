@@ -35,3 +35,37 @@
   margin-left: 700px;
   margin-top: 70px;
 }
+@media only screen and (max-width: 900px) {
+  .conteiner {
+    width: 390px;
+    height: 1003px;
+  }
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  .inpConteiner {
+    flex-direction: column;
+  }
+
+  .fixed1 {
+    position: absolute;
+    margin-top: 326px;
+    z-index: 2;
+  }
+
+  .fixed2 {
+    position: absolute;
+    margin-top: 429px;
+    z-index: 1;
+  }
+
+  .email {
+    margin-top: 145px;
+  }
+  .btn {
+    display: flex;
+    margin-left: 160px;
+  }
+}

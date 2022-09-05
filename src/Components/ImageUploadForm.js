@@ -23,25 +23,37 @@ function ImageUploadForm(props) {
     setImage(imgFile);
     const formData = new FormData();
     formData.append("userpic", imgFile, imgFile.name);
-
+    console.log(image);
     props.getImage(imgFile);
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
     <>
-      <div style={props.border} className={classes.parent} {...getRootProps()}>
+      <div
+        style={
+          (props.border,
+          props.state
+            ? { width: " 358px", height: " 244px" }
+            : { width: " 878px", height: " 423px" })
+        }
+        className={classes.parent}
+        {...getRootProps()}
+      >
         <input {...getInputProps()} />
         {image.length < 1 ? (
           <div className={classes.uploadedFlex}>
             <p className={classes.text}>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</p>
             <Button
+              state={props.state}
               stats={{ height: "60px", width: "233px" }}
               text={"ატვირთე"}
             ></Button>
           </div>
         ) : (
-          <div></div>
+          <div>
+            <img src={image.file} alt="img"></img>
+          </div>
         )}
       </div>
       {image.length < 1 ? (
@@ -49,7 +61,7 @@ function ImageUploadForm(props) {
       ) : (
         <div className={classes.uploadedParent}>
           <div className={classes.flex}>
-            <img className={classes.img} src={uploadedimage}></img>
+            <img className={classes.img} src={uploadedimage} alt="img"></img>
             <p>{image.name}</p>
             <p>{image.size + "mb"}</p>
           </div>

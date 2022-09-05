@@ -83,7 +83,7 @@ const ListOfLeptop = (props) => {
       </div>
       {data.map((item) => {
         return (
-          <div>
+          <div key={item.laptop.price}>
             <div className={classes.firstLine}>
               <div>
                 <img
@@ -104,11 +104,19 @@ const ListOfLeptop = (props) => {
                   <p className={classes.property}>
                     {item.user.name + " " + item.user.surname}
                   </p>
-                  {teamFiltered.map((item) => {
-                    return <p className={classes.property}>{item.name}</p>;
+                  {teamFiltered.map((item, index) => {
+                    return (
+                      <p key={index} className={classes.property}>
+                        {item.name}
+                      </p>
+                    );
                   })}
-                  {positionFiltered.map((item) => {
-                    return <p className={classes.property}>{item.name}</p>;
+                  {positionFiltered.map((item, index) => {
+                    return (
+                      <p key={index} className={classes.property}>
+                        {item.name}
+                      </p>
+                    );
                   })}
                   <p className={classes.property}> {item.user.email}</p>
                   <p className={classes.property}> {item.user.phone_number}</p>
@@ -126,8 +134,12 @@ const ListOfLeptop = (props) => {
               <div className={classes.nameline}>
                 <p className={classes.property}> {item.laptop.name}</p>
 
-                {brandFiltered.map((item) => {
-                  return <p className={classes.property}>{item.name}</p>;
+                {brandFiltered.map((item, index) => {
+                  return (
+                    <p key={index} className={classes.property}>
+                      {item.name}
+                    </p>
+                  );
                 })}
 
                 <p className={classes.property}> {item.laptop.ram}</p>

@@ -3,7 +3,7 @@ import Button from "../Button.js";
 import Frame from "../../images/Frame.png";
 import { useNavigate } from "react-router-dom";
 
-const FinalPage = () => {
+const FinalPage = (props) => {
   let navigate = useNavigate();
 
   localStorage.clear();
@@ -15,7 +15,11 @@ const FinalPage = () => {
           <p className={classes.text}>ჩანაწერი დამატებულია!</p>
           <div className={classes.btnparent}>
             <Button
-              stats={{ height: "60px", width: "408px" }}
+              stats={
+                props.responsive.state
+                  ? { height: "60px", width: "297px" }
+                  : { height: "60px", width: "408px" }
+              }
               text={"ჩანაწერების სია"}
               nav={"/listofdata"}
             ></Button>

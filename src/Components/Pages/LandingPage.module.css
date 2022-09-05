@@ -20,3 +20,30 @@
   flex-direction: column;
   gap: 26px;
 }
+.bannerMobile {
+  display: none;
+  height: 348.999755859375px;
+  width: 268.58111572265625px;
+
+  border-radius: 0px;
+}
+@media only screen and (max-width: 900px) {
+  .flexParent {
+    justify-content: center;
+    flex-direction: column;
+    height: 844px;
+    width: 390px;
+  }
+  .banner {
+    display: none;
+  }
+  .bannerMobile {
+    display: flex;
+    height: 348px;
+    width: 268px;
+
+    border-radius: 0px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+}
