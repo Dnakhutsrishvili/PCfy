@@ -11,7 +11,7 @@ import BackVector from "../Helpers/BackVector";
 
 const StaffInfo = ({ data, responsive }) => {
   let navigate = useNavigate();
-  //state
+  //states stored value
   const [filteredPositions, setFilteredPositions] = useState([]);
   const [name, setName] = useState(() => {
     // getting stored value
@@ -89,7 +89,7 @@ const StaffInfo = ({ data, responsive }) => {
       .get("https://pcfy.redberryinternship.ge/api/positions")
       .then((response) => setPositionData(response.data.data));
   }, []);
-
+  //set localstorage on change event
   useEffect(() => {
     localStorage.setItem("name", JSON.stringify(name));
     localStorage.setItem("lastname", JSON.stringify(lastName));
@@ -105,6 +105,7 @@ const StaffInfo = ({ data, responsive }) => {
     setFilteredPositions(newarr);
   }, [name, lastName, email, number, team, position, dataTosend, positionData]);
 
+  //validation to transfer leptop info page
   useEffect(() => {
     if (
       nameValidation &&
@@ -128,6 +129,7 @@ const StaffInfo = ({ data, responsive }) => {
 
   const getFullData = (e) => {
     e.preventDefault();
+    //validation
     if (
       name.trim().length > 1 &&
       name.match(/^([აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ]+)$/)
@@ -180,7 +182,7 @@ const StaffInfo = ({ data, responsive }) => {
       setPositionValidation(true);
       setBorderColorFormPos({});
     }
-
+    //data for api
     setDataTosend({
       name: name,
       surname: lastName,

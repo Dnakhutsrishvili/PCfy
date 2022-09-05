@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const BackVector = (props) => {
   let navigate = useNavigate();
 
+  //use navigate function to navigate into different pages
   const navigateHendeler = () => {
     navigate(props.nav);
   };

@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 const LeptopInfo = (props) => {
   let navigate = useNavigate();
+  //state for image
   const [image, setImage] = useState("");
 
   const [data] = useState(() => {
@@ -103,6 +104,7 @@ const LeptopInfo = (props) => {
     return initialValue || { name: "CPU", id: 0 };
   });
 
+  //get data for rendering
   useEffect(() => {
     // GET request using axios inside useEffect React hook
     axios
@@ -113,6 +115,7 @@ const LeptopInfo = (props) => {
       .then((response) => setCpuData(response.data.data));
   }, []);
 
+  //set localstorage speretly for onchange save
   useEffect(() => {
     localStorage.setItem("brends", JSON.stringify(Brends));
     localStorage.setItem("leptopname", JSON.stringify(leptopName));
@@ -138,6 +141,7 @@ const LeptopInfo = (props) => {
     props.staffInfoData,
   ]);
 
+  //geting image formdata
   const getImage = (image) => {
     const formData = new FormData();
     formData.append("userpic", image, image.name);
@@ -236,6 +240,7 @@ const LeptopInfo = (props) => {
     } else {
       laptopState = "used";
     }
+    //creating object to send to api
     const dataLeptop = {
       token: "938f2a57717c76cdf84bce4f32254396",
       laptop_name: leptopName,

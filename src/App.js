@@ -17,12 +17,14 @@ function App() {
   const getData = (data) => {
     setStaffInfoData(data);
   };
+  //get laptop id to render exact laptop by id
   const getId = (dataid) => {
     setLeptopId(dataid);
   };
   //responsive state
   const [width, setWindowWidth] = useState(0);
 
+  //using global width to change responsive state
   useEffect(() => {
     updateDimensions();
 

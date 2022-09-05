@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const FinalPage = (props) => {
   let navigate = useNavigate();
-
+  //clear local storage
   localStorage.clear();
   return (
     <>

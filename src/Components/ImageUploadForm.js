@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import Button from "./Button";
 import classes from "./ImageUploadForm.module.css";
@@ -12,10 +12,6 @@ function ImageUploadForm(props) {
 
     return saved || [];
   });
-
-  useEffect(() => {
-    localStorage.setItem("image", image);
-  }, [image]);
 
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
@@ -52,10 +48,12 @@ function ImageUploadForm(props) {
           </div>
         ) : (
           <div>
-            <img src={image.file} alt="img"></img>
+            <p className={classes.text}>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</p>
+            <img src={image} alt="img"></img>
           </div>
         )}
       </div>
+
       {image.length < 1 ? (
         <div></div>
       ) : (

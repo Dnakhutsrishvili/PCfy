@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const ListOfData = (props) => {
   const [data, setData] = useState([]);
 
+  //geting data async
   useEffect(() => {
     async function getdata() {
       const res = await fetch(
