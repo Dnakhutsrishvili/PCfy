@@ -91,3 +91,78 @@
   margin-right: auto;
   margin-top: 45px;
 }
+@media only screen and (max-width: 900px) {
+  .mapeConteiner {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(50px, 1fr));
+    grid-gap: 1rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 45px;
+  }
+  .mappedParent {
+    width: 358px;
+    height: 123px;
+  }
+  .img {
+    width: 164px;
+    height: 109px;
+  }
+
+  .name {
+    margin-top: -1px;
+    font-family: "Helvetica Neue";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height, or 117% */
+
+    display: flex;
+    align-items: center;
+
+    /* შავი/500 */
+
+    color: #2e2e2e;
+  }
+  .laptopname {
+    font-family: "Helvetica Neue";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height, or 117% */
+
+    display: flex;
+    align-items: center;
+
+    /* შავი/500 */
+
+    color: #2e2e2e;
+  }
+  .rowParent {
+    margin-left: 2px;
+  }
+
+  .text {
+    position: absolute;
+    width: 147px;
+    height: 20px;
+    left: calc(50% - 147px / 2 - 0.5px);
+    top: -51px;
+
+    font-family: "Helvetica Neue";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+
+    text-align: center;
+
+    /* შავი/700 */
+
+    color: #232323;
+  }
+}

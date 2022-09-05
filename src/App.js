@@ -56,8 +56,14 @@ function App() {
           path="finalpage"
           element={<FinalPage responsive={responsive} />}
         />
-        <Route path="listofdata" element={<ListOfData data={getId} />} />
-        <Route path="listofleptop" element={<ListOfLeptop id={leptopId} />} />
+        <Route
+          path="listofdata"
+          element={<ListOfData responsive={responsive} data={getId} />}
+        />
+        <Route
+          path="listofleptop"
+          element={<ListOfLeptop id={leptopId} responsive={responsive} />}
+        />
       </Routes>
     </>
   );

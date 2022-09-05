@@ -25,36 +25,38 @@ const ListOfData = (props) => {
 
   return (
     <>
-      <div className={classes.parent}>
-        <BackVector nav={"/"} />
-        <p className={classes.text}>ᲩᲐᲜᲐᲬᲔᲠᲔᲑᲘᲡ ᲡᲘᲐ</p>
-      </div>
-      <div className={classes.mapeConteiner}>
-        {data.map((item) => {
-          return (
-            <div className={classes.mappedParent} key={item.laptop.id}>
-              <img
-                alt="laptopImg"
-                className={classes.img}
-                src={`https://pcfy.redberryinternship.ge/${item.laptop.image}`}
-              ></img>
-              <div className={classes.rowParent}>
-                <div className={classes.nameParent}>
-                  <p className={classes.name}>{item.user.name}</p>
-                  <p className={classes.name}>{item.user.surname}</p>
-                </div>
-                <p className={classes.laptopname}> {item.laptop.name}</p>
-                <div
-                  onClick={() => {
-                    props.data(item.laptop.id);
-                  }}
-                >
-                  <Link to="/listofleptop">მეტის ნახვა</Link>
+      <div>
+        <div className={classes.parent}>
+          <BackVector nav={"/"} state={props.responsive.state} />
+          <p className={classes.text}>ᲩᲐᲜᲐᲬᲔᲠᲔᲑᲘᲡ ᲡᲘᲐ</p>
+        </div>
+        <div className={classes.mapeConteiner}>
+          {data.map((item) => {
+            return (
+              <div className={classes.mappedParent} key={item.laptop.id}>
+                <img
+                  alt="laptopImg"
+                  className={classes.img}
+                  src={`https://pcfy.redberryinternship.ge/${item.laptop.image}`}
+                ></img>
+                <div className={classes.rowParent}>
+                  <div className={classes.nameParent}>
+                    <p className={classes.name}>{item.user.name}</p>
+                    <p className={classes.name}>{item.user.surname}</p>
+                  </div>
+                  <p className={classes.laptopname}> {item.laptop.name}</p>
+                  <div
+                    onClick={() => {
+                      props.data(item.laptop.id);
+                    }}
+                  >
+                    <Link to="/listofleptop">მეტის ნახვა</Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </>
   );

@@ -21,13 +21,6 @@ const BackVector = (props) => {
       >
         <img className={classes.vectorImg} src={Vector} alt="vector"></img>
       </div>
-
-      {props.state && (
-        <div>
-          <p className={classes.info}>თანამშრომლის ინფო</p>
-          <p className={classes.info}>1/2</p>
-        </div>
-      )}
     </>
   );
 };

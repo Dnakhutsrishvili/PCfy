@@ -78,7 +78,7 @@ const ListOfLeptop = (props) => {
   return (
     <>
       <div className={classes.parent}>
-        <BackVector nav={"/listofdata"} />
+        <BackVector state={props.responsive.state} nav={"/listofdata"} />
         <p className={classes.text}>ᲚᲔᲞᲢᲝᲞᲘᲡ ᲘᲜᲤᲝ</p>
       </div>
       {data.map((item) => {
@@ -124,14 +124,14 @@ const ListOfLeptop = (props) => {
               </div>
             </div>
             <div className={classes.secondLine}>
-              <div className={classes.nameline}>
+              <div className={classes.namelineNamefirst}>
                 <p className={classes.widtName}>ლეპტოპის სახელი:</p>
                 <p className={classes.widtName}>ლეპტოპის ბრენდი:</p>
 
                 <p className={classes.widtName}>RAM:</p>
                 <p className={classes.widtName}>მეხსიერების ტიპი:</p>
               </div>
-              <div className={classes.nameline}>
+              <div className={classes.namelineNameSecond}>
                 <p className={classes.property}> {item.laptop.name}</p>
 
                 {brandFiltered.map((item, index) => {
@@ -147,7 +147,7 @@ const ListOfLeptop = (props) => {
                   {item.laptop.hard_drive_type}
                 </p>
               </div>
-              <div className={classes.secondlineParent}>
+              <div className={classes.secondlineParentNew}>
                 <div className={classes.nameline}>
                   <p className={classes.widtName}>CPU:</p>
                   <p className={classes.widtName}>CPU-ს ბირთვი:</p>
@@ -166,13 +166,13 @@ const ListOfLeptop = (props) => {
                 <p className={classes.widtName}>ლეპტოპის მდგომარეობა:</p>
                 <p className={classes.widtName}>ლეპტოპის ფასი:</p>
               </div>
-              <div className={classes.nameline}>
+              <div className={classes.namelineNew}>
                 <p className={classes.property}>
                   {item.laptop.state === "new" ? "ახალი" : "მეორადი"}
                 </p>
                 <p className={classes.property}>{item.laptop.price} ₾</p>
               </div>
-              <div className={classes.secondlineParent}>
+              <div className={classes.secondlineParentNew}>
                 <p className={classes.widtName}>შეძენის რიცხვი:</p>
                 <p className={classes.property}>{item.laptop.purchase_date}</p>
               </div>
