@@ -40,7 +40,6 @@
 }
 .widtName {
   margin-right: 80px;
-  margin-left: 68px;
 
   font-family: "Helvetica Neue";
   font-style: normal;
@@ -55,6 +54,7 @@
 .parentUser {
   display: flex;
   flex-direction: row;
+  margin-left: 105px;
 }
 .property {
   font-family: "Helvetica Neue";
@@ -72,7 +72,7 @@
 .secondLine {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 54px;
   border-bottom: 1px solid #a5a5a5;
   width: 1178px;
@@ -80,6 +80,8 @@
   margin-right: auto;
   padding-bottom: 84px;
 }
+
 .secondlineParent {
   display: flex;
+  margin-left: 311px;
 }

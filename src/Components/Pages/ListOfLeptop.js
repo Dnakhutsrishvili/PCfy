@@ -74,7 +74,6 @@ const ListOfLeptop = (props) => {
     });
   });
   const brandFiltered = variableThree.flat();
-  console.log(data);
 
   return (
     <>
@@ -89,6 +88,7 @@ const ListOfLeptop = (props) => {
               <div>
                 <img
                   className={classes.img}
+                  alt="laptopimg"
                   src={`https://pcfy.redberryinternship.ge/${item.laptop.image}`}
                 ></img>
               </div>

@@ -14,7 +14,7 @@ const LeptopInfo = (props) => {
   let navigate = useNavigate();
   const [image, setImage] = useState("");
 
-  const [data, setData] = useState(() => {
+  const [data] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("datatosend");
 
@@ -261,7 +261,6 @@ const LeptopInfo = (props) => {
       laptop_price: price,
       ...data,
     };
-    console.log(dataLeptop);
 
     const headers = {
       Accept: "multipart/form-data",

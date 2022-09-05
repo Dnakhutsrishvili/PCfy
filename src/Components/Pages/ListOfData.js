@@ -23,7 +23,6 @@ const ListOfData = (props) => {
     return () => (unmounted = true);
   }, []);
 
-  console.log(data);
   return (
     <>
       <div className={classes.parent}>
@@ -35,6 +34,7 @@ const ListOfData = (props) => {
           return (
             <div className={classes.mappedParent} key={item.laptop.id}>
               <img
+                alt="laptopImg"
                 className={classes.img}
                 src={`https://pcfy.redberryinternship.ge/${item.laptop.image}`}
               ></img>

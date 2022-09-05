@@ -103,7 +103,7 @@ const StaffInfo = ({ data }) => {
       return team.id === pos.team_id;
     });
     setFilteredPositions(newarr);
-  }, [name, lastName, email, number, team, position, dataTosend]);
+  }, [name, lastName, email, number, team, position, dataTosend, positionData]);
 
   useEffect(() => {
     if (
@@ -123,12 +123,13 @@ const StaffInfo = ({ data }) => {
     numberValidation,
     teamValidation,
     positionValidation,
+    navigate,
   ]);
 
   const getFullData = (e) => {
     e.preventDefault();
     if (
-      name.trim().length > 2 &&
+      name.trim().length > 1 &&
       name.match(/^([აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ]+)$/)
     ) {
       setNameValidation(true);
